@@ -1,0 +1,13 @@
+.hunger-level-bar {
+    width: 80%;
+    background-color: #ddd;
+    border-radius: 5px;
+    margin: 20px auto;
+    height: 30px;
+  }
+  
+  .hunger-level-fill {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+  }

@@ -1,0 +1,13 @@
+.pet-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .pet {
+    font-size: 100px;
+  }
+  
+  .hunger-level {
+    margin-top: 20px;
+    font-size: 20px;
+  }
