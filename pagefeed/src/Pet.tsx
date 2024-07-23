@@ -2,21 +2,21 @@ import React from 'react';
 import './pet.css';
 
 interface PetProps {
-  hungerLevel: number;
-}
-
-const Pet: React.FC<PetProps> = ({ hungerLevel }) => {
-  return (
-    <div className="pet-container">
-      <div className="pet">
-        {/* Here you can add an image or animation of the pet */}
-        🐶
+    hungerLevel: number;
+    isFed: boolean;
+  }
+  
+  const Pet: React.FC<PetProps> = ({ hungerLevel, isFed }) => {
+    return (
+      <div className={`pet-container ${isFed ? 'jump' : ''}`}>
+        <div className="pet">
+          🐶
+        </div>
+        <div className="hunger-level">
+          Hunger Level: {hungerLevel}
+        </div>
       </div>
-      <div className="hunger-level">
-        Hunger Level: {hungerLevel}
-      </div>
-    </div>
-  );
-};
-
-export default Pet;
+    );
+  };
+  
+  export default Pet;
