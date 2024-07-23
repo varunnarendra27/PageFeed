@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Pet from './Pet';
 import HungerLevel from './hungerlevel';
+import logo from './assets/logo.png'; // Import the logo image
 
 const App: React.FC = () => {
   const [hungerLevel, setHungerLevel] = useState<number>(100);
   const [pagesRead, setPagesRead] = useState<number>(0);
   const [isFed, setIsFed] = useState<boolean>(false);
-  const [activeTab, setActiveTab] = useState<number>(0); // 0: Home, 1: Feed, 2: Stats, 3: Settings
+  const [activeTab, setActiveTab] = useState<number>(0); // 0: Home, 1: Stats, 2: Settings
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -45,25 +46,25 @@ const App: React.FC = () => {
       case 0:
         return (
           <>
-            <HungerLevel hungerLevel={hungerLevel} />
+            <div className="header">
+              <HungerLevel hungerLevel={hungerLevel} />
+            </div>
             <Pet hungerLevel={hungerLevel} isFed={isFed} />
+            <div className="feed-container">
+              <input
+                type="number"
+                value={pagesRead}
+                onChange={handleInputChange}
+                placeholder="Enter pages read"
+                className="feed-input"
+              />
+              <button onClick={feedPet} className="feed-button">Feed Pet</button>
+            </div>
           </>
         );
       case 1:
-        return (
-          <>
-            <input
-              type="number"
-              value={pagesRead}
-              onChange={handleInputChange}
-              placeholder="Enter pages read"
-            />
-            <button onClick={feedPet}>Feed Pet</button>
-          </>
-        );
-      case 2:
         return <div>Statistics Content</div>;
-      case 3:
+      case 2:
         return <div>Settings Content</div>;
       default:
         return null;
@@ -76,16 +77,14 @@ const App: React.FC = () => {
         {renderContent()}
       </div>
       <div className="nav-bar">
+        <img src={logo} alt="Logo" className="logo" />
         <div className={`nav-item ${activeTab === 0 ? 'active' : ''}`} onClick={() => setActiveTab(0)}>
           Home
         </div>
         <div className={`nav-item ${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)}>
-          Feed
-        </div>
-        <div className={`nav-item ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)}>
           Stats
         </div>
-        <div className={`nav-item ${activeTab === 3 ? 'active' : ''}`} onClick={() => setActiveTab(3)}>
+        <div className={`nav-item ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)}>
           Settings
         </div>
       </div>

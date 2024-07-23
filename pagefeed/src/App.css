@@ -1,9 +1,10 @@
-.App {
+App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   height: 100vh;
+  background-color: #f0f0f0;
   padding-bottom: 50px; /* Space for the nav bar */
 }
 
@@ -25,6 +26,12 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.logo {
+  width:20%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px;
+}
+
 .nav-item {
   flex: 1;
   text-align: center;
@@ -36,10 +43,46 @@
 }
 
 .nav-item.active {
-  background-color: #4caf50;
+  background-color: #9e2902;
   color: #fff;
 }
 
 .nav-item:hover {
-  background-color: #f0f0f0;
+  background-color: #e0e0e0; /* Grey hover color */
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.feed-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+.feed-input:focus {
+  border-color: #9e2902;
+  outline: none;
+}
+
+.feed-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #9e2902;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.feed-button:hover {
+  background-color: #9e2902;
 }
