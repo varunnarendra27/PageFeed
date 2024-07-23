@@ -9,13 +9,25 @@ const App: React.FC = () => {
   const [pagesRead, setPagesRead] = useState<number>(0);
   const [isFed, setIsFed] = useState<boolean>(false);
   const [activeTab, setActiveTab] = useState<number>(0); // 0: Home, 1: Stats, 2: Settings
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true); // Initial loading state
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setHungerLevel(prev => Math.max(prev - 1, 0));
-    }, 1000);
+    if (!isInitialLoading) {
+      const interval = setInterval(() => {
+        setHungerLevel(prev => Math.max(prev - 1, 0));
+      }, 1000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
+  }, [isInitialLoading]);
+
+  // Simulate the initial loading state duration
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 5000); // 5 seconds duration
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,21 +85,31 @@ const App: React.FC = () => {
 
   return (
     <div className="App">
-      <div className="content">
-        {renderContent()}
-      </div>
-      <div className="nav-bar">
-        <img src={logo} alt="Logo" className="logo" />
-        <div className={`nav-item ${activeTab === 0 ? 'active' : ''}`} onClick={() => setActiveTab(0)}>
-          Home
+      {isInitialLoading ? (
+        <div className="initial-logo-container">
+          <img src={logo} alt="Logo" className="initial-logo" />
         </div>
-        <div className={`nav-item ${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)}>
-          Stats
+      ) : (
+        <div className="main-content">
+          <div className="nav-bar">
+            <img src={logo} alt="Logo" className="logo" />
+            <div className="nav-items-container">
+              <div className={`nav-item ${activeTab === 0 ? 'active' : ''}`} onClick={() => setActiveTab(0)}>
+                Home
+              </div>
+              <div className={`nav-item ${activeTab === 1 ? 'active' : ''}`} onClick={() => setActiveTab(1)}>
+                Stats
+              </div>
+              <div className={`nav-item ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)}>
+                Settings
+              </div>
+            </div>
+          </div>
+          <div className="content">
+            {renderContent()}
+          </div>
         </div>
-        <div className={`nav-item ${activeTab === 2 ? 'active' : ''}`} onClick={() => setActiveTab(2)}>
-          Settings
-        </div>
-      </div>
+      )}
     </div>
   );
 };

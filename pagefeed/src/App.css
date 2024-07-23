@@ -1,11 +1,95 @@
-App {
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   height: 100vh;
-  background-color: #f0f0f0;
-  padding-bottom: 50px; /* Space for the nav bar */
+
+}
+
+.initial-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  animation: fadeOut 5s forwards;
+}
+
+.initial-logo {
+  width: 40%;
+  height: auto;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.main-content {
+  animation: fadeIn 1s forwards; /* Fade in the main content */
+  opacity: 0; /* Start with invisible content */
+  width: 100%; /* Ensure main content takes full width */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Full width */
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adjusted shadow direction */
+  padding: 10px 20px; /* Added padding for better spacing */
+  position: fixed; /* Fixed position at the top */
+  top: 0; /* Positioned at the top */
+  left: 0; /* Ensure navbar is aligned to the left */
+  z-index: 1000;
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.logo {
+  width: 20%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Margin to separate from nav items */
+}
+
+.nav-items-container {
+  display: flex;
+  justify-content: flex-start; /* Align nav items to the left */
+  flex-grow: 1; /* Allow the container to grow and take available space */
+}
+
+.nav-item {
+  padding: 10px 20px; /* Padding for better spacing */
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-item.active {
+  background-color: #8B0000; /* Dark red */
+  color: #fff;
+}
+
+.nav-item:hover {
+  background-color: #e0e0e0; /* Grey hover color */
 }
 
 .content {
@@ -14,41 +98,8 @@ App {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.nav-bar {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: #fff;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-  width:20%; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 20px;
-}
-
-.nav-item {
-  flex: 1;
-  text-align: center;
-  padding: 15px 0;
-  cursor: pointer;
-  font-size: 16px;
-  color: #333;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.nav-item.active {
-  background-color: #9e2902;
-  color: #fff;
-}
-
-.nav-item:hover {
-  background-color: #e0e0e0; /* Grey hover color */
+  padding-top: 80px; /* Added padding to account for the fixed nav-bar */
+  width: 100%; /* Ensure content takes full width */
 }
 
 .feed-container {
@@ -68,7 +119,7 @@ App {
 }
 
 .feed-input:focus {
-  border-color: #9e2902;
+  border-color: #8B0000; /* Dark red */
   outline: none;
 }
 
@@ -76,7 +127,7 @@ App {
   padding: 10px 20px;
   font-size: 16px;
   color: #fff;
-  background-color: #9e2902;
+  background-color: #8B0000; /* Dark red */
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -84,5 +135,5 @@ App {
 }
 
 .feed-button:hover {
-  background-color: #9e2902;
+  background-color: #800000; /* Darker red */
 }

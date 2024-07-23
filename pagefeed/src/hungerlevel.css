@@ -1,13 +1,20 @@
-.hunger-level-bar {
-    width: 80%;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin: 20px auto;
-    height: 30px;
+.hunger-level {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
   }
   
-  .hunger-level-fill {
+  .hunger-bar {
+    width: 80%;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .hunger-bar-fill {
     height: 100%;
-    background-color: #9e2902;
-    border-radius: 5px;
+    background-color: #8B0000; /* Dark red */
+    width: 100%; /* This should be set dynamically based on hunger level */
   }
