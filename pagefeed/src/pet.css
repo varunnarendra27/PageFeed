@@ -17,11 +17,29 @@
     }
   }
   
+  @keyframes alive {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
   .pet {
     font-size: 100px;
+  }
+  
+  .pet-image {
+    width: 400px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
   }
   
   .hunger-level {
     margin-top: 20px;
     font-size: 20px;
+  }
+  
+  .alive-animation {
+    animation: alive 1s infinite;
   }
